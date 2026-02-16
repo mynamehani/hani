@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>SURPRISE</title>
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    text-align:center;
+    background:black;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* شاشة العد */
+#countdownScreen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background:black;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:10000;
+    font-size:30px;
+}
+
+/* صندوق السؤال */
+#questionBox{
+    margin-top:150px;
+    padding-top: 70px;
+}
+
+#questionBox h1, #questionBox p {
+    color: white;
+}
+
+input{
+    padding:10px;
+    font-size:18px;
+}
+
+button{
+    padding:10px 20px;
+    font-size:18px;
+    background:#ff4e88;
+    color:white;
+    border:none;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+#mainContent{
+    display:none;
+    padding:20px;
+    padding-top: 70px;
+}
+
+#mainContent h1 {
+    color:white;
+}
+
+.columns{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+
+.column{
+    background:white;
+    width:30%;
+    padding:15px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+.column img{
+    width:50%;
+    max-width:150px;
+}
+
+h2{
+    color:#ff4e88;
+}
+
+#dailyMessage{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#000;
+    color:white;
+    padding:15px;
+    font-size:18px;
+    z-index:9999;
+}
+
+/* انفجار القلوب */
+.explosionHeart{
+    position:fixed;
+    font-size:35px;
+    pointer-events:none;
+    z-index:11000;
+    animation: explode 1.5s ease-out forwards;
+}
+
+@keyframes explode{
+    to{
+        transform: translate(var(--x), var(--y));
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- شاشة العد -->
+<div id="countdownScreen">
+    <h1>المفاجأة هتفتح بعد 💖</h1>
+    <h2 id="countdown"></h2>
+</div>
+
+<!-- محتوى الموقع -->
+<div id="siteWrapper" style="display:none;">
+
+<div id="questionBox">
+    <h1>اول يوم اتكلمنا في كان يوم ايه؟ ❤️</h1>
+    <p>اكتبي الإجابة عشان تدخلي 🎁</p>
+    <input type="text" id="answer">
+    <button onclick="checkAnswer()">ادخلي</button>
+</div>
+
+<div id="mainContent">
+    <h1>💕🎂 كل سنه وانت طيبه يا احلي حد في الدنيا </h1>
+    <div class="columns">
+
+        <div class="column">
+            <h2>The Past 😂</h2>
+            <img src="past.jpeg">
+            <p>
+هاي تعالي افتكري معايا بجا<br>
+يوم ما جيت عند بابا الدرس في اولي اعدادي انا مش فاكرك في الفتره دي بس فاكرك في تانيه الفتره الي كنت معجب بيكي وعمر ما جه في دماغي اننا نتكلم كنت بشوفك دحيحه وعبيطه وغبيه وكل حاجه <br>
+بدأت احبك في اخر الترم التاني من تانيه ع او اول تالته ع بس عمر ما جه في دماغي اننا نتكلم برضو بعديها بقا اليوم التحفه لما بتعي من اك شوقي 😂<br>
+فاكر الي فتح كلام النحو لما كنت بكلمك علي اساس شوقي وقولتله اسال اختك حتي صعب ولا سهل لا وانت قولتيتي سهل سهل ازاي ما علينا ده كان اول يوم اتكلمنا فيه <br>
+كان يوم 18-12-2024<br>
+منت بحبك من قبلها اصلا وكنت بقعد اغلي في درس الانجلش ورا ايام العبط والله كنت بموووووت يلا فداكي<br>
+فاكر يوم عيد ميلادك لما بعتلك الشراب الابيض منور😂 هتلاقي الاسكرين <br>
+اول جمله علقت معايا (اتأكدت انك بقيت غالي عندي)<br>
+كنت بنتكلم وقولتيها ومن ساعتها وانا فاكرها<br>
+فاكره يوم ما جيتي عند مجدي كنت هموت من الفرحه اه والله😂 ضحك ايام تحفه كده وانت كنتي كتكوته تحفه بجد<br>
+في كلام انا مكنتش بقولو اصلا ولا كنت اتخيل اني اقولو زي ها وعيعي واهعع وكل العبثيات دي البركه فيكي😂<br>
+في بقا مواقف بتضحكني كل ما افتكرها زي يوم مجدي وانت مكنتيش باينه😂<br>
+ولا يوم ما احنا الاتنين سالنا المستر عن الجرامر بالصدفه والماتشينج الي فضلنا نعملو اسبوعين ورا بعض بالبركه شككنا مصر كلها فينا😂<br>
+بحبك اقولك يا ازعتيي جدا <br>
+وفي حركه كوتي كده بتعمليها تلقائي بس بيبقي شكلي كوتيييييي هبقي ابعتلك الاستيكر <br>
+من الاخر انهارده مش عيد ميلادك انهارده عيد ميلادك احلي سنه وتلت شهور عيشتهم في حياتي💗
+</p>
+        </div>
+
+        <div class="column">
+            <h2>The Present 👸</h2>
+            <img src="present.jpeg">
+           <p>
+انت عارفه ان الوقتي كملنا 429 يوم مع بعض احلي ايام عشتها انت من ساعت ما دخلتي حياتي وانت شقلبتيها للاحسن<br>
+خليتيني اتكلم وبقيت بحب الكلام غيرتي حاجات فيها وحشه خليتيني احس ان لسه فسه ناس بتحبني وتستاهل اعيش علشانهم<br>
+انت كل حاجه بالنسبالي يا ليا كل حاجه انا عايش علشان وعلشان ابسطك لو طلبتي عيني هديهالك من غير مفكر <br>
+مستني اليوم ده من زمان بجد <br>
+متخيليه عيد ميلاد اجمل واحده في الدنيا ياااه بجد<br>
+انت احلي واحده شوفتها في حياتي وعمري ما هشوف زيك اصلا ومفيش زيك ولا في في حنيتك وطيبتك ولا عبطك ولا قرفك<br>
+انا بموت فيكي انت وكل حاجه فيكي بحب رغيك اوي اوي وبحب اسمعك وبحب صياحك والحاجات العبثيه الي بتشاركهاني دي <br>
+وعمري في يوم مزهق منك ابدا ابدا ازهق من ازاي بس<br>
+مع انك بتخليني اغيييييييييييييييييييييييييييييييييير وبتقرفيني ومطلعه عين الي خلفوني بس مقدرش اعيش من غيرك والله<br>
+وبحب عيونك اويويوويويويوويويوي وشكلك وملامحك انت مزه اصلا تبارك الرحمن يعني😍😍<br>
+انا عمري مبعد عنك ولا اقدر ابعد عنك اصلا مقدرش اعيش من غيرك والله<br>
+دنا بدعيلك كميه دعي بجد مبدعيهاش لنفسي<br>
+انا عمري محبيت حد كده ولا اتعلقت بحد ده بس انت بجد غير انت حياتي <br>
+وعارف اني بزعلك كتير بس والله بس والله مش بيبقي قصدي انا بتعامل معاكي بتلقائيه وبحكيلك اي حاجه اي حاجه بجد انا مبتكلمش غير معاكي اصلا ف مش عاوزك تزعلي مني ابدا<br>
+انا واثق فيكي جدااا بجد <br>
+انا مش عارف اوصف المشارع علشان هيا مبتتوصفش بجد ف بكتب الي بيجي في دماغي<br>
+ف كل سنه وانت طيبه يا ازعتي وعقبال مليون سنه وانت معايا ووانا قارفك ومزهقك ومجننك ومطلع عينك وربنا يخليكي ليا يمزتييييي 😍وتبقي من نصيبي علشان مش هسيبك تتجوزي غيري انا عرفتك اهو<br>
+مش بحبك انا بموت فيكي💗💗
+</p>
+        </div>
+
+        <div class="column">
+            <h2>The Future ✨</h2>
+            <img src="future.jpeg">
+          <p>
+بما انك بقا كنت قايله عاوزه تخشي صيدله ف ان شاء الله هتحققي حلمك وتبقي احسن دكتوره وابقي اجي اخد الحقنه عندك😂😂 <br>
+ربنا يحقق كل احلامك يكتكوتي وتبقي الي نفسك فيه ويفرحك ويبسطك ويخليني سبب في فرحتك ان شاء الله <br>
+مش لاقي كلام كتير هنا بس هرجع اقولك تاني انك بتاعتي ومش هسيبك <br>
+وحبيت تبقي دي هديه عيد ميلادك علشان انت مش راضيه اجبلك حاجه😔 <br>
+واهي حاجه اسبيشيل ليكي بس والموقع كلو ليكي انت <br>
+بحبك اوي والله بجد💗💗
+</p>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<script>
+// 🎯 تاريخ الميلاد 20 فبراير 2026 الساعة 00:00 UTC
+const birthday = Date.UTC(2025, 1, 20, 0, 0, 0);
+
+const countdown = document.getElementById("countdown");
+const countdownScreen = document.getElementById("countdownScreen");
+const siteWrapper = document.getElementById("siteWrapper");
+
+const timer = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = birthday - now;
+
+    if(distance <= 0){
+        clearInterval(timer);
+        startExplosion();
+        setTimeout(()=>{
+            countdownScreen.style.display="none";
+            siteWrapper.style.display="block";
+        },1500);
+    } else {
+        const hours = Math.floor(distance / (1000*60*60));
+        const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+        const seconds = Math.floor((distance % (1000*60)) / 1000);
+        countdown.innerHTML = `ساعة ${hours}  : ${minutes} دقيقة : ${seconds} ثانية`;
+    }
+},1000);
+
+// 💥 انفجار القلوب
+function startExplosion(){
+    for(let i=0;i<120;i++){
+        const heart = document.createElement("div");
+        heart.className="explosionHeart";
+        heart.innerHTML="💖";
+        heart.style.left="50%";
+        heart.style.top="50%";
+        const x = (Math.random()-0.5)*900 + "px";
+        const y = (Math.random()-0.5)*900 + "px";
+        heart.style.setProperty('--x',x);
+        heart.style.setProperty('--y',y);
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),1500);
+    }
+}
+
+// ❤️ القلوب المتحركة
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.top = "-10px";
+    heart.style.fontSize = (Math.random()*20+15) + "px";
+    heart.style.pointerEvents = "none";
+    heart.style.zIndex = "0";
+    heart.style.animation = "fall 4s linear forwards";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),4000);
+}
+setInterval(createHeart,300);
+
+const style = document.createElement('style');
+style.innerHTML=`
+@keyframes fall{
+    to{ transform: translateY(110vh); opacity:0;}
+}`;
+document.head.appendChild(style);
+
+/* رسائل يومية جديدة */
+const messages = [
+"كل يوم بيمر وانا فخور بيكي ❤️",
+"ضحكتك هي اللي بتهوّن عليا تعب اليوم كله.",
+"وجودك في حياتي مش مجرد حب، ده أمان وسكن.",
+"انتي الشخص الوحيد اللي بقدر أكون على طبيعتي معاه.",
+"كل يوم بيعدي وأنا معاكي، بحس إني كسبت العالم.",
+"انتي مش بس حبيبتي، انتي بنتي وصاحبتي وأهلي.",
+"لو خيروني بين العالم وبينك، هختارك من غير تفكير.",
+"ملامحك هي المكان اللي بهرب فيه من الدنيا.",
+"شكراً إنك اخترتيني أكون جزء من حكايتك.",
+"انتي الحاجة الوحيدة اللي بدعي ربنا تدوم في حياتي.",
+"عينيكي فيها سحر بيخليني أنسى أي هم.",
+"حنيتك عليا هي اللي خلتني أحب الحياة.",
+"يا بختي بيكي، ويا بخت قلبي عشان سكنتي فيه.",
+"انتي النجمة اللي بتنور ضلمة أيامي.",
+"كلمة 'بحبك' قليلة جداً على اللي حاسه ناحيتك.",
+"انتي أقوى مما تتخيلي، وأنا دايماً في ضهرك.",
+"مهما كانت الدنيا صعبة، افتكري إني معاكي خطوة بخطوة.",
+"فخور بيكي وبكل حاجة بتعمليها مهما كانت بسيطة.",
+"ما تسمحيش لأي حاجة تطفى النور اللي جواكي.",
+"انتي تستاهلي كل حاجة حلوة في الدنيا دي.",
+"لو وقعتي في أي وقت، ايدي جاهزة تشيلك.",
+"بكرة هيكون أحلى، طول ما إحنا سوا.",
+"ذكاءك وشخصيتك هما اللي مخلييني مبهور بيكي دايماً.",
+"حققي أحلامك وأنا هكون أول واحد بيسقف ليكي.",
+"خليكي دايمًا واثقة في نفسك، لأنك فعلاً مميزة.",
+"يومك هيكون جميل زيك، بس ابتسمي.",
+"انتي بطلة حكايتك، وأنا أكبر معجب بيكي.",
+"ما تسيبيش الزعل ياخد من وقتك، انتي مخلوقة للفرح.",
+"طول ما إحنا مع بعض، مفيش مستحيل.",
+"انتي أحسن حاجة حصلت في التاريخ، صدقيني.",
+"فاكرة أول مرة اتكلمنا؟ كانت بداية أجمل قصة.",
+"وعد مني، هفضل أحبك أكتر من اليوم اللي قبله.",
+"نفسي نلف العالم سوا ونبني ذكريات في كل مكان.",
+"كل خناقة بينا بتقربنا أكتر وبتعلمنا قيمة بعض.",
+"السنة دي هتكون سنة جبر وعوض لينا سوا.",
+"أنا سندك لما الكل يغيب، ووعدي ليكي مش كلام.",
+"نفسي نكبر سوا ونحكي حكايتنا لأحفادنا.",
+"كل يوم معاكي هو عيد ميلاد لقلبي.",
+"مهما المسافات بعدت، قلبي مبيعرفش يروح لغيرك.",
+"استني مني مفاجآت كتير، لأنك تستاهلي الدلع كله.",
+"انتي السكر اللي محلي مرارة أيامي.",
+"حتى وانتي نكدية، بتبقي قمر وبرضه بحبك.",
+"أنا محظوظ إن قلبي وقع في واحدة زيك.",
+"انتي اللي طلعت بيها من الدنيا.",
+"ممنوع الزعل النهاردة، بقرار ملكي مني!",
+"خدي بالك من نفسك، عشان انتي شايلة قلبي معاكي.",
+"مفيش حد في الكون يقدر ياخد مكانك، انتي الأصل.",
+"بحب تفاصيلك الصغيرة اللي محدش بياخد باله منها غيري.",
+"كل سنة وانتي منورة دنيتي، وكل سنة وانتي ملكتي"
+];
+
+const randomIndex = Math.floor(Math.random()*messages.length);
+const message = messages[randomIndex];
+
+const msgBox = document.createElement("div");
+msgBox.id="dailyMessage";
+msgBox.innerHTML=` رساله النهارده: ${message}`;
+document.body.appendChild(msgBox);
+
+// الباسورد
+function checkAnswer(){
+    const userAnswer = document.getElementById("answer").value;
+    if(userAnswer==="18-12-2024"){
+        document.getElementById("questionBox").style.display="none";
+        document.getElementById("mainContent").style.display="block";
+        window.scrollTo(0,0);
+    } else {
+        alert("غلط حاولي تاني");
+    }
+}
+</script>
+
+</body>
+</html>
